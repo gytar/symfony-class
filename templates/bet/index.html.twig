@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bet index
+{% endblock %}
+
+{% block body %}
+
+	{% if 'ROLE_ADMIN' in user.roles %}
+		{% include "includes/admin_header.html.twig" %}
+	{% endif %}
+    {% if 'ROLE_CHALLENGER' in user.roles %}
+		{% include "includes/challenger_header.html.twig" %}
+	{% endif %}
+    {% if 'ROLE_GAMBLER' in user.roles %}
+		{% include "includes/gambler_header.html.twig" %}
+	{% endif %}
+
+	<h1>Bet index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Amount</th>
+				<th>Challenger</th>
+				<th>Game</th>
+				<th>Gambler</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for bet in bets %}
+				<tr>
+					<td>{{ bet.id }}</td>
+					<td>{{ bet.amount }}</td>
+					<td>{{ bet.challenger.email }}</td>
+					<td>{{ bet.game.name }}</td>
+					<td>{{ bet.user.email }}</td>
+					<td>
+						<a href="{{ path('bet_show', {'id': bet.id}) }}">show</a>
+						<a href="{{ path('bet_edit', {'id': bet.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('bet_new') }}">Create new</a>
+{% endblock %}
