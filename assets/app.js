@@ -6,23 +6,18 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.sass';
+import './styles/global.sass';
 
 // start the Stimulus application
 import './bootstrap';
 
 import Vue from 'vue';
+import BetPostForm from './Components/BetPostForm'
 
-const MyComponent = {
-    data() {
-        return { message: 'Hello from Vue!' }
-    }
-}
 
 new Vue({
-    el: '#app',
-    components: {
-        MyComponent
-    },
+    el: '#betPostForm',
+    render: (h) => { h(BetPostForm); },
+    components: { BetPostForm }
 })
 

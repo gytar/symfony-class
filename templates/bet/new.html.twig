@@ -6,19 +6,15 @@
 {% block body %}
 	<h1>Create new Bet</h1>
 	<div id="betPostForm">
-		{% verbatim %}
-		{% endverbatim %}
-		 {{ include('bet/_form.html.twig') }}
-        <BetPostForm />
+		<app></app>
+        
    </div>
+
+		 {{ include('bet/_form.html.twig') }}
 
 	
 	{# <button class="btn">{{ button_label|default('Save') }}</button>
 	{{ form_end(form) }} #}
 
 	<a href="{{ path('bet_index') }}">back to list</a>
-{% endblock %}
-
-{% block javascripts %}
-	<script src="{{ asset('build/postForm.js') }}"></script>
 {% endblock %}

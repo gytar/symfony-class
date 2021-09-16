@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\GameRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,10 +22,13 @@ class Game
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotNull(message="Ne doit pas être null")
+     * @Assert\NotBlank(message="Doit contenir quelque chose")
      */
     private $startAt;
 
     /**
+     * @Assert\NotNull(message="Il doit y avoir deux combattants")
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="games")
      */
     private $challengers;

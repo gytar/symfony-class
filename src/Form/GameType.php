@@ -11,6 +11,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class GameType extends AbstractType
 {
@@ -30,6 +31,9 @@ class GameType extends AbstractType
             },
             'choice_label' => 'name',
             'multiple' => true,
+            'constraints' => [
+                new NotNull(null, "Il doit y avoir au moins deux combattants")
+                ]
         ]);
     }
 
